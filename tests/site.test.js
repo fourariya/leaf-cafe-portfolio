@@ -124,6 +124,51 @@ test("CSS keeps responsive breakpoints and reduced-motion support", () => {
   assert.match(css, /prefers-reduced-motion: reduce/);
 });
 
+// Regression guards for the bag-close scroll jump. Browser behaviour is covered by
+// tests/smoke.spec.py (test_bag_scroll_stability); these catch the fix being removed.
+test("closing the bag restores focus without scrolling the page", () => {
+  assert.match(
+    main,
+    /focusBeforeBag\.focus\(\{\s*preventScroll:\s*true\s*\}\)/,
+    "focus() on the sticky-header trigger must use preventScroll",
+  );
+  assert.match(
+    css,
+    /html\s*\{[^}]*scrollbar-gutter:\s*stable/,
+    "scrollbar-gutter keeps layout width when the bag locks scrolling",
+  );
+});
+
+// Thai headings must not inherit the negative tracking used for Latin display text.
+test("Thai display headings reset letter-spacing", () => {
+  const thHero = css.match(/:lang\(th\) \.hero h1 \{[^}]*\}/);
+  const thH2 = css.match(/:lang\(th\) \.contact-copy h2 \{[^}]*\}/);
+  assert.ok(thHero && /letter-spacing:\s*0;/.test(thHero[0]), "hero h1");
+  assert.ok(thH2 && /letter-spacing:\s*0;/.test(thH2[0]), "section h2");
+  // These rules must come after the Latin rules they override (same cascade layer).
+  assert.ok(css.indexOf(":lang(th) .hero h1 {") > css.indexOf(".hero h1 {"));
+  assert.ok(
+    css.indexOf(":lang(th) .section-heading h2,") >
+      css.indexOf(".section-heading h2,"),
+  );
+});
+
+test("every menu photo is a local WebP with a documented credit", () => {
+  const credits = read("assets/photos/CREDITS.md");
+  for (const p of products) {
+    assert.match(p.image, /^photos\/menu-[a-z]+\.webp$/, `${p.id} image path`);
+    const file = p.image.split("/")[1];
+    assert.ok(
+      credits.includes(`\`${file}\``),
+      `${file} missing from CREDITS.md`,
+    );
+  }
+  assert.match(credits, /pexels\.com\/license/);
+  // Stock photos must not be presented as the café's real products.
+  assert.match(copy.th.menuFootnote, /ภาพสต็อก/);
+  assert.match(copy.en.menuFootnote, /stock images, not real products/);
+});
+
 test("demo disclosure stays visible in both languages", () => {
   assert.match(copy.th.menuFootnote, /สมมติ/);
   assert.match(copy.en.menuFootnote, /fictional/i);

@@ -50,6 +50,9 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: calc(var(--header-h) + 16px);
+  /* Keep the scrollbar's space when the bag locks scrolling, so text doesn't reflow
+     and the page doesn't jump on open/close (desktop browsers with classic scrollbars). */
+  scrollbar-gutter: stable;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
@@ -449,6 +452,7 @@ main:focus {
 
 :lang(th) .hero h1 {
   line-height: 1.28;
+  letter-spacing: 0;
 }
 
 .hero h1 > span,
@@ -666,6 +670,8 @@ main:focus {
 :lang(th) .experience-header h2,
 :lang(th) .contact-copy h2 {
   line-height: 1.35;
+  font-weight: 500;
+  letter-spacing: 0;
 }
 
 .section-heading h2 em,

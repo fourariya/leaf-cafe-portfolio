@@ -115,6 +115,61 @@ def test_mobile(browser):
     page.close()
 
 
+def test_bag_scroll_stability(browser):
+    """Regression: closing the bag must not move the page (was a 458px jump).
+
+    Uses real mouse clicks at coordinates, because locator.click() scrolls the
+    target into view first and would hide the bug.
+    """
+    for width, height in ((375, 812), (768, 1024), (1440, 900)):
+        for method in ("x", "escape", "backdrop", "continue"):
+            page, errors = open_page(browser, viewport={"width": width, "height": height})
+            page.evaluate(
+                "() => { const c = document.querySelectorAll('.product-card')[3];"
+                " window.scrollTo({ top: c.getBoundingClientRect().top + scrollY - 200, behavior: 'instant' }); }"
+            )
+            page.wait_for_timeout(300)
+            start = page.evaluate("scrollY")
+            for _ in range(5):
+                if method == "continue":
+                    page.evaluate(f"window.scrollTo({{ top: {start}, behavior: 'instant' }})")
+                    page.wait_for_timeout(150)
+                before = page.evaluate("scrollY")
+                click_center(page, "#bag-open")
+                page.wait_for_timeout(400)
+                assert page.locator("#bag-drawer").get_attribute("aria-hidden") == "false"
+                if method == "x":
+                    click_center(page, "#bag-close")
+                elif method == "escape":
+                    page.keyboard.press("Escape")
+                elif method == "continue":
+                    click_center(page, "#bag-continue")
+                else:
+                    drawer = page.locator("#bag-drawer").bounding_box()
+                    if drawer["x"] < 40:  # full-width drawer on phones: no backdrop to click
+                        page.keyboard.press("Escape")
+                    else:
+                        page.mouse.click(drawer["x"] / 2, height / 2)
+                page.wait_for_timeout(1300)
+                assert page.locator("#bag-drawer").get_attribute("aria-hidden") == "true"
+                assert not page.evaluate("document.body.classList.contains('no-scroll')")
+                after = page.evaluate("scrollY")
+                if method == "continue":
+                    menu_top = page.evaluate("document.getElementById('menu').getBoundingClientRect().top")
+                    assert 0 <= menu_top <= 120, f"{width}px continue: menu top {menu_top}"
+                else:
+                    assert abs(after - before) <= 1, f"{width}px {method}: moved {after - before}px"
+                    assert abs(after - start) <= 1, f"{width}px {method}: drifted {after - start}px"
+                    assert page.evaluate("document.activeElement.id") == "bag-open"
+            assert not errors, errors
+            page.close()
+
+
+def click_center(page, selector):
+    box = page.locator(selector).bounding_box()
+    page.mouse.click(box["x"] + box["width"] / 2, box["y"] + box["height"] / 2)
+
+
 def launch(p):
     """Prefer an installed Chrome/Edge; fall back to Playwright's own Chromium."""
     for channel in ("chrome", "msedge", None):
@@ -132,4 +187,6 @@ if __name__ == "__main__":
         print("PASS: desktop filters, bag, language, form validation, overflow and JS errors")
         test_mobile(browser)
         print("PASS: mobile navigation, drawer, overflow and JS errors")
+        test_bag_scroll_stability(browser)
+        print("PASS: bag close keeps scroll position (X / Esc / backdrop) and continue goes to the menu")
         browser.close()

@@ -352,7 +352,10 @@
     setTimeout(() => {
       if (!state.bagOpen) backdrop.hidden = true;
     }, 300);
-    if (focusBeforeBag?.isConnected) focusBeforeBag.focus();
+    // The trigger sits in the sticky header; with scroll-padding-top a plain
+    // focus() makes the browser scroll the page up to "reveal" it.
+    if (focusBeforeBag?.isConnected)
+      focusBeforeBag.focus({ preventScroll: true });
   }
 
   /** Keep Tab focus inside the open drawer. */
