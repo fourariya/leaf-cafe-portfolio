@@ -1,10 +1,27 @@
 {
   "name": "leaf-cafe-portfolio-demo",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
-  "description": "Fictional bilingual cafe landing page and interactive portfolio demo",
+  "description": "Fictional bilingual café landing page and interactive portfolio demo",
+  "type": "module",
   "scripts": {
-    "check": "node --check script.js && node tests/validate.mjs",
-    "test": "node tests/validate.mjs"
+    "serve": "python -m http.server 5500",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "test": "node --test",
+    "check": "npm run format:check && npm run lint && npm run test",
+    "build": "node tools/build.mjs",
+    "preview": "python -m http.server 5501 --directory dist"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.14.0",
+    "globals": "^17.14.0",
+    "prettier": "^3.9.10"
+  },
+  "engines": {
+    "node": ">=22"
   }
 }

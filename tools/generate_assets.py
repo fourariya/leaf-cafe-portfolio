@@ -1,5 +1,5 @@
 from pathlib import Path
-p=Path(__file__).parent/'assets'
+p=Path(__file__).resolve().parent.parent/'assets'  # tools/ -> project assets/ (overwrites the SVGs)
 p.mkdir(exist_ok=True)
 hero='''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 860" role="img" aria-label="Iced matcha latte illustration with botanical elements">
 <defs>

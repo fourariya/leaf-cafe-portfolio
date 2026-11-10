@@ -1,0 +1,2 @@
+# Python tools in tools/ (install into the project venv: .venv\Scripts\pip install -r tools/requirements.txt)
+pillow>=13,<14  # tools/make_cover.py; license: MIT-CMU (HPND)

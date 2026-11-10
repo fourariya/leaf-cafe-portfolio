@@ -1,0 +1,10 @@
+node_modules/
+dist/
+coverage/
+package-lock.json
+.playwright-mcp/
+leaf-cafe-standalone.html
+screenshots/
+assets/
+CLAUDE.md
+.impeccable/hook.cache.json

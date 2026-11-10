@@ -8,3 +8,9 @@ dist/
 !.env.example
 client-data/
 output/
+
+# Local tool cache and Python environments
+.impeccable/hook.cache.json
+.venv/
+__pycache__/
+coverage/
