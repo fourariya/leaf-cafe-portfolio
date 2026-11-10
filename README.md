@@ -23,25 +23,26 @@ A bilingual (Thai/English), responsive landing page for a **fictional** matcha c
 - **Contact form validation** per field (required, minimum length, email format, maximum length), with inline messages, `aria-invalid`, focus moved to the first problem, and messages that re-translate when the language changes.
 - **Accessibility basics**: skip link, landmarks, one `h1` and no skipped heading levels, visible focus outlines, WCAG AA text contrast, every control at least 24×24 px (WCAG 2.5.8; the main touch controls are 40–44 px), labelled form fields, `prefers-reduced-motion` support, `lang` set per language.
 - **Security headers in the page**: a Content-Security-Policy meta tag (`script-src 'self'`, `connect-src 'none'`, `form-action 'none'`) so the page cannot send form data even if JavaScript fails.
-- **Original artwork**: eight SVG illustrations made for this demo (no stock photo licensing).
+- **Menu photography**: six real food photos from Pexels (free licence, credited in [`assets/photos/CREDITS.md`](assets/photos/CREDITS.md)). They share a 1.19:1 crop, are about 20–165 KB each as WebP, and are lazy-loaded. The hero and story illustrations are original SVG artwork made for this demo.
+- **Stable scrolling**: closing the bag with ×, Esc or the backdrop keeps the page exactly where it was. "Continue" goes to the menu on purpose.
 
 ### Demo limitations
 
 - The **bag** has no checkout, payment, stock or persistence. It resets on reload.
 - The **contact form** validates input and shows a success message, but **never sends or stores anything**. Connecting it to email or a database needs a backend, spam protection and a privacy notice, and would be separate scope.
-- Prices and products are fictional.
+- Prices and products are fictional. The menu photos are **stock images for illustration**, not pictures of real products; the page says so under the menu.
 
 ## Technologies
 
-| Area       | Choice                                                                      |
-| ---------- | --------------------------------------------------------------------------- |
-| Markup     | Semantic HTML5                                                              |
-| Styles     | Plain CSS with custom-property design tokens (`src/styles.css`)             |
-| Scripts    | Vanilla JavaScript, classic scripts (no framework, no bundler)              |
-| Fonts      | DM Sans, Kanit, Noto Sans Thai via Google Fonts (SIL Open Font License 1.1) |
-| Quality    | Prettier, ESLint, Node's built-in test runner (`node --test`)               |
-| Browser QA | Playwright (MCP during development; optional Python smoke test)             |
-| Images     | Original SVG artwork; `tools/make_cover.py` uses Pillow for the cover image |
+| Area       | Choice                                                                                                       |
+| ---------- | ------------------------------------------------------------------------------------------------------------ |
+| Markup     | Semantic HTML5                                                                                               |
+| Styles     | Plain CSS with custom-property design tokens (`src/styles.css`)                                              |
+| Scripts    | Vanilla JavaScript, classic scripts (no framework, no bundler)                                               |
+| Fonts      | DM Sans, Kanit, Noto Sans Thai via Google Fonts (SIL Open Font License 1.1)                                  |
+| Quality    | Prettier, ESLint, Node's built-in test runner (`node --test`)                                                |
+| Browser QA | Playwright (MCP during development; optional Python smoke test)                                              |
+| Images     | Pexels photos (WebP) for the menu, original SVG illustrations elsewhere; Pillow for photo prep and the cover |
 
 The website itself has **no runtime dependencies**. Everything in `package.json` is a development tool.
 
@@ -55,6 +56,8 @@ src/
   logic.js                  Pure helpers: translation, prices, bag maths, form validation
   main.js                   DOM wiring: language, menu, bag drawer, form, navigation
 assets/                     SVG illustrations, favicon, og-image.png (social preview)
+  photos/                   Menu photos (WebP) + CREDITS.md (sources and licence)
+  menu-*.svg                Original menu illustrations, kept as a fallback
 tests/
   logic.test.js             Unit tests for src/logic.js
   site.test.js              Static checks: TH/EN key parity, markup, demo-only behavior
@@ -65,6 +68,7 @@ tools/
   build.mjs                 npm run build -> dist/ (copies only the website files)
   build_standalone.py       Builds leaf-cafe-standalone.html (single offline file)
   make_cover.py             Builds the 1600x900 Fastwork cover from screenshots
+  prepare_photos.py         Crops/converts downloaded Pexels originals into assets/photos/
   og-card.html              Source layout for assets/og-image.png
   generate_assets.py        Regenerates the SVG illustrations (overwrites assets/)
   requirements.txt          Python tool dependencies (Pillow)
@@ -118,11 +122,12 @@ The site is static files only. Any static host works (Netlify, Vercel, Cloudflar
 ## Customizing for a real client
 
 - Edit text and menu items in `src/content.js` (both languages must keep the same keys; `npm test` checks this).
-- Replace the illustrations in `assets/` with licensed photos or artwork.
+- Replace the stock menu photos with the client's own product photos (same 1000×840 WebP size; `tools/prepare_photos.py` shows the crop settings) and update `CREDITS.md`.
 - A real contact form needs a backend or form service. Update the CSP `connect-src` / `form-action` accordingly and add a privacy notice.
 
 ## Licenses
 
 - Website code and SVG illustrations: created for this demo.
+- Menu photos: Pexels License (free commercial use, attribution not required; credited anyway). Photographers and source links: [`assets/photos/CREDITS.md`](assets/photos/CREDITS.md). Do not reuse them as a logo or trademark, or sell them unaltered.
 - Fonts: DM Sans, Kanit and Noto Sans Thai, SIL Open Font License 1.1, loaded from Google Fonts. Remove the font `<link>` tags if a client prohibits third-party requests; the page falls back to system fonts.
 - Dev tools: Prettier (MIT), ESLint (MIT), globals (MIT). Python tool: Pillow (MIT-CMU).

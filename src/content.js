@@ -49,7 +49,7 @@
       filterDessert: "ขนมหวาน",
       menuStatus: "แสดง {count} รายการ",
       menuFootnote:
-        "ราคาและรายการอาหารเป็นข้อมูลสมมติเพื่อสาธิตเว็บไซต์เท่านั้น",
+        "ราคาและรายการอาหารเป็นข้อมูลสมมติเพื่อสาธิตเว็บไซต์เท่านั้น ภาพเมนูเป็นภาพสต็อกจาก Pexels ไม่ใช่สินค้าจริงของร้าน",
       categoryDrink: "เครื่องดื่ม",
       categoryDessert: "ขนมหวาน",
       badgePopular: "ยอดนิยม",
@@ -171,7 +171,7 @@
       filterDessert: "Desserts",
       menuStatus: "Showing {count} items",
       menuFootnote:
-        "Menu items and prices are fictional, for portfolio demonstration only.",
+        "Menu items and prices are fictional, for portfolio demonstration only. Menu photos are Pexels stock images, not real products.",
       categoryDrink: "Drink",
       categoryDessert: "Dessert",
       badgePopular: "Popular",
@@ -261,7 +261,7 @@
       id: "matcha",
       category: "drink",
       price: 135,
-      image: "menu-matcha.svg",
+      image: "photos/menu-matcha.webp",
       label: "popular",
       th: { name: "Signature Matcha", desc: "มัทฉะละมุน หอมชา เข้มกำลังดี" },
       en: {
@@ -273,7 +273,7 @@
       id: "strawberry",
       category: "drink",
       price: 155,
-      image: "menu-strawberry.svg",
+      image: "photos/menu-strawberry.webp",
       label: "new",
       th: {
         name: "Strawberry Cloud",
@@ -288,7 +288,7 @@
       id: "coffee",
       category: "drink",
       price: 120,
-      image: "menu-coffee.svg",
+      image: "photos/menu-coffee.webp",
       label: "",
       th: {
         name: "Slow Morning Coffee",
@@ -303,7 +303,7 @@
       id: "cheesecake",
       category: "dessert",
       price: 165,
-      image: "menu-cheesecake.svg",
+      image: "photos/menu-cheesecake.webp",
       label: "popular",
       th: {
         name: "Matcha Cheesecake",
@@ -318,7 +318,7 @@
       id: "croissant",
       category: "dessert",
       price: 95,
-      image: "menu-croissant.svg",
+      image: "photos/menu-croissant.webp",
       label: "",
       th: { name: "Butter Croissant", desc: "ครัวซองต์ชั้นบางกรอบ หอมเนยอบสด" },
       en: {
@@ -330,7 +330,7 @@
       id: "cookies",
       category: "dessert",
       price: 85,
-      image: "menu-cookies.svg",
+      image: "photos/menu-cookies.webp",
       label: "new",
       th: { name: "Matcha Cookies", desc: "คุกกี้มัทฉะกรอบนอกนุ่มใน" },
       en: {
