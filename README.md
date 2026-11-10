@@ -109,15 +109,32 @@ python -m venv .venv
 
 ## Deployment (static hosting)
 
-The site is static files only. Any static host works (Netlify, Vercel, Cloudflare Pages, GitHub Pages).
+The site is static files only. `npm run build` creates `dist/`, which contains only `index.html`, `_headers`, `src/` and `assets/`. Tests, tools and screenshots are left out.
 
-1. `npm run check` then `npm run build`.
-2. Publish the **`dist/`** folder (it contains only `index.html`, `src/` and `assets/`; tests, tools and screenshots are left out).
-   - Netlify / Cloudflare Pages: build command `npm run build`, publish directory `dist`.
-   - Vercel: framework preset "Other", build command `npm run build`, output directory `dist`.
-   - GitHub Pages: publish the contents of `dist/` (for example with a Pages workflow).
-3. After the first deploy, replace the relative `og:image` in `index.html` with the absolute URL (`https://<your-domain>/assets/og-image.png`) so social previews work, rebuild and redeploy.
-4. Optional: set the same Content-Security-Policy as a real HTTP header on the host and add `frame-ancestors 'none'` there (meta tags cannot set it).
+### Current deployment: Netlify, manual upload (Netlify Drop)
+
+Live site: <https://chic-moonbeam-379b0e.netlify.app/>. It is not connected to Git; every update is a manual upload of `dist/`.
+
+To update the live site and keep the same URL:
+
+1. `npm run check`, then `npm run build`.
+2. Check that `dist/` contains `index.html`, `_headers`, `src/` and `assets/` at its top level.
+3. Sign in at <https://app.netlify.com>, open the existing site **chic-moonbeam-379b0e** and go to its **Deploys** tab.
+4. Drag the **`dist` folder** onto the drop area on the Deploys page ("drag and drop your site output folder here"). Netlify publishes it as a new deploy of the same site.
+   - Do **not** use the stand-alone Netlify Drop page (app.netlify.com/drop) or "Add new site". Those create a new site with a different URL.
+5. When the deploy shows **Published**, re-check the live site: open it, and run `curl -I https://chic-moonbeam-379b0e.netlify.app/` to confirm the headers.
+
+Rollback: in **Deploys**, open an earlier deploy and choose **Publish deploy**.
+
+`_headers` gives Netlify the security headers: `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`, `Permissions-Policy`, and a Content-Security-Policy that adds `frame-ancestors 'none'` to the CSP in `index.html`. If the site ever needs to be shown inside an iframe (for example an embedded portfolio viewer), relax `X-Frame-Options` and `frame-ancestors` deliberately.
+
+### Social preview URLs
+
+`index.html` uses absolute URLs for `canonical`, `og:url`, `og:image` and `twitter:image`, because social crawlers ignore relative image paths. If the site moves to a custom domain, update those four lines and redeploy. To refresh a cached preview, use the Facebook Sharing Debugger, or share the link again in LINE.
+
+### Other static hosts
+
+Any static host can serve `dist/`. Vercel and Cloudflare Pages: build command `npm run build`, output directory `dist`. GitHub Pages: publish the contents of `dist/`. These hosts ignore `_headers` unless they support it (Cloudflare Pages does), so set equivalent headers in the host's own configuration.
 
 ## Customizing for a real client
 

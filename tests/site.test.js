@@ -169,6 +169,56 @@ test("every menu photo is a local WebP with a documented credit", () => {
   assert.match(copy.en.menuFootnote, /stock images, not real products/);
 });
 
+// Social crawlers (Facebook, LINE, X) ignore relative image URLs.
+test("social preview metadata uses absolute HTTPS URLs", () => {
+  const attr = (pattern) => html.match(pattern)?.[1];
+  const ogImage = attr(/property="og:image"\s+content="([^"]+)"/);
+  const twImage = attr(/name="twitter:image"\s+content="([^"]+)"/);
+  const ogUrl = attr(/property="og:url"\s+content="([^"]+)"/);
+  const canonical = attr(/rel="canonical"\s+href="([^"]+)"/);
+  for (const [name, value] of Object.entries({
+    ogImage,
+    twImage,
+    ogUrl,
+    canonical,
+  })) {
+    assert.match(
+      value ?? "",
+      /^https:\/\//,
+      `${name} must be an absolute https URL`,
+    );
+  }
+  assert.ok(ogImage.endsWith("/assets/og-image.png"));
+  assert.equal(twImage, ogImage);
+  assert.equal(ogUrl, canonical);
+  assert.ok(fs.existsSync(path.join(root, "assets", "og-image.png")));
+});
+
+test("Netlify _headers ships security headers and is copied by the build", () => {
+  const headers = read("_headers");
+  assert.match(headers, /^\/\*$/m, "rules apply to every path");
+  for (const rule of [
+    /X-Content-Type-Options: nosniff/,
+    /X-Frame-Options: DENY/,
+    /Referrer-Policy: strict-origin-when-cross-origin/,
+    /Content-Security-Policy: .*frame-ancestors 'none'/,
+  ]) {
+    assert.match(headers, rule);
+  }
+  // The header CSP must not be looser than the <meta> CSP in index.html.
+  const metaCsp = html.match(
+    /http-equiv="Content-Security-Policy"\s+content="([^"]+)"/,
+  )[1];
+  const headerCsp = headers.match(/Content-Security-Policy: (.+)/)[1];
+  for (const directive of metaCsp.split(";").map((d) => d.trim())) {
+    assert.ok(
+      headerCsp.includes(directive),
+      `header CSP missing: ${directive}`,
+    );
+  }
+  assert.match(read("tools/build.mjs"), /"_headers"/);
+});
+
 test("demo disclosure stays visible in both languages", () => {
   assert.match(copy.th.menuFootnote, /สมมติ/);
   assert.match(copy.en.menuFootnote, /fictional/i);

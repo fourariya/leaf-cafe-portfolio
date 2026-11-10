@@ -9,6 +9,8 @@ const dist = path.join(root, "dist");
 
 const ENTRIES = [
   "index.html",
+  "_headers", // Netlify security headers
+
   "src/styles.css",
   "src/content.js",
   "src/logic.js",
