@@ -8,16 +8,16 @@ This file records only what was **actually run** on the current source. Re-run t
 | ---------------------------------------- | -------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
 | Formatting                               | `npm run format:check`                                                                       | All matched files use Prettier code style                                                      |
 | Lint                                     | `npm run lint`                                                                               | 0 problems                                                                                     |
-| Unit + static tests                      | `npm test`                                                                                   | 23 / 23 pass                                                                                   |
+| Unit + static tests                      | `npm test`                                                                                   | 25 / 25 pass                                                                                   |
 | All of the above                         | `npm run check`                                                                              | exit code 0                                                                                    |
 | Test sensitivity (markup)                | mutation run on a temp copy with `<b>` injected into a translated element                    | failed as expected (`heroLine3`); original unchanged                                           |
 | Test sensitivity (scroll, Thai tracking) | temp copies with `preventScroll`, `scrollbar-gutter` or the Thai `letter-spacing: 0` removed | each failed as expected; original hashes unchanged                                             |
-| Production build                         | `npm run build`                                                                              | `dist/` with 16 files, including `assets/photos/`                                              |
-| Standalone build                         | `python tools/build_standalone.py`                                                           | `leaf-cafe-standalone.html`, about 639 KB, with 6 WebP photos inlined and no external requests |
+| Production build                         | `npm run build`                                                                              | `dist/` with `index.html`, `_headers`, `src/`, `assets/`                                       |
+| Standalone build                         | `python tools/build_standalone.py`                                                           | `leaf-cafe-standalone.html`, about 703 KB, with 7 WebP photos inlined and no external requests |
 
 ## Browser checks (Playwright, Chromium) — PASS
 
-Run against three targets: the source site, the built `dist/` folder, and `leaf-cafe-standalone.html`.
+Run against the source site, the built `dist/` folder (with the `_headers` rules emulated), `leaf-cafe-standalone.html`, and the live Netlify site (<https://chic-moonbeam-379b0e.netlify.app/>, real headers). On the live site, all five security headers matched `_headers` and no CSP violations were logged. Every other check matched the local results, including the real hero photo.
 
 - **Functional suite at 375, 768 and 1440 px:** 204 of 204 checks passed (68 per target). Coverage:
   - Menu photos: 6 WebP files at 1000×840 fill the 1.19:1 cards, and the stock-photo note is shown.
@@ -42,7 +42,7 @@ Run against three targets: the source site, the built `dist/` folder, and `leaf-
 - `python tests/smoke.spec.py`, including the new `test_bag_scroll_stability`, and `python tests/capture_gallery.py`. The syntax parses, but Python Playwright is not installed in the project venv. The same flows were run through Playwright MCP above.
 - Safari, Firefox and real phones. Only Chromium (desktop and emulated mobile) was tested.
 - A formal accessibility audit with assistive technology. No screen reader was used.
-- Any public deployment. Nothing has been deployed yet.
+- How social previews actually render on Facebook, LINE and X. The metadata and the 1200×630 image were verified, but the platforms' own previews were not checked.
 
 ## Known limitations
 

@@ -1,150 +1,160 @@
-# Leaf Café — Web Development Portfolio Demo
+# Leaf Café
 
-A bilingual (Thai/English), responsive landing page for a **fictional** matcha café, built as a Fastwork web development portfolio sample.
+A bilingual (Thai/English), responsive landing page for a **fictional** matcha café. It is a portfolio demonstration for a freelance web development service on Fastwork.
 
-> **Demo project / concept website.** Leaf Café is not a real business and this is not client work. Menu items, prices and copy are made up. The bag and contact form are demonstrations only: no orders, payments or messages are sent anywhere.
+**Live demo:** <https://chic-moonbeam-379b0e.netlify.app/>
+
+> **Fictional demonstration project.** Leaf Café is not a real business and this is not client work. Menu items, prices and copy are invented. The shopping bag and contact form are demos only: there is no payment processing, no real order submission, and no message is sent or stored anywhere.
 
 ![Leaf Café on desktop and mobile](screenshots/leaf-cafe-fastwork-cover.png)
 
-## คำอธิบายผลงาน (สำหรับ Fastwork)
+## Screenshots
 
-**Leaf Café — เว็บไซต์โปรโมตร้านคาเฟ่ (ผลงานตัวอย่าง / ร้านสมมติ)**
+| Desktop                                            | Tablet                                           | Mobile                                           |
+| -------------------------------------------------- | ------------------------------------------------ | ------------------------------------------------ |
+| ![Desktop hero](screenshots/leaf-cafe-desktop.png) | ![Tablet hero](screenshots/leaf-cafe-tablet.png) | ![Mobile hero](screenshots/leaf-cafe-mobile.png) |
 
-เว็บไซต์หน้าเดียวสำหรับร้านมัทฉะและคาเฟ่ รองรับภาษาไทยและอังกฤษในปุ่มเดียว แสดงผลสวยทั้งมือถือ แท็บเล็ต และคอมพิวเตอร์ มีเมนูที่กรองตามหมวดหมู่ได้ ตะกร้าตัวอย่างที่เพิ่ม ลด และคำนวณราคารวมได้ทันที และฟอร์มติดต่อที่ตรวจข้อมูลก่อนส่งพร้อมบอกจุดที่ต้องแก้ไขชัดเจน เขียนด้วย HTML, CSS และ JavaScript ล้วน ไม่ใช้ framework จึงโหลดเร็ว แก้ไขเนื้อหาง่าย และนำขึ้นโฮสติ้งแบบ static ได้ทุกเจ้า
+| Menu with filters                               | Shopping bag (demo)                                  | Mobile navigation                                    |
+| ----------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| ![Menu section](screenshots/leaf-cafe-menu.png) | ![Bag drawer](screenshots/leaf-cafe-bag-desktop.png) | ![Mobile menu](screenshots/leaf-cafe-mobile-nav.png) |
 
-> หมายเหตุ: เป็นผลงานตัวอย่างเพื่อแสดงฝีมือ ไม่ใช่ร้านค้าจริงและไม่ใช่งานของลูกค้า ตะกร้าและฟอร์มเป็นระบบสาธิต ไม่มีการสั่งซื้อ ชำระเงิน หรือส่งข้อมูลจริง
+| Form validation                                                   | English version                                    | Mobile menu cards                                           |
+| ----------------------------------------------------------------- | -------------------------------------------------- | ----------------------------------------------------------- |
+| ![Contact form errors](screenshots/leaf-cafe-form-validation.png) | ![English hero](screenshots/leaf-cafe-english.png) | ![Mobile menu cards](screenshots/leaf-cafe-mobile-menu.png) |
+
+## ภาษาไทย (สรุปสั้น)
+
+Leaf Café เป็นเว็บไซต์ตัวอย่างร้านคาเฟ่มัทฉะ (ร้านสมมติ) ทำขึ้นเพื่อแสดงผลงานรับทำเว็บไซต์ รองรับภาษาไทยและอังกฤษ แสดงผลได้ทั้งมือถือ แท็บเล็ต และคอมพิวเตอร์ มีเมนูที่กรองได้ ตะกร้าตัวอย่างที่คำนวณราคา และฟอร์มติดต่อที่ตรวจข้อมูลก่อนส่ง ตะกร้าและฟอร์มเป็นระบบสาธิต ไม่มีการสั่งซื้อ ชำระเงิน หรือส่งข้อมูลจริง
+
+## Overview
+
+A single-page site built with plain HTML, CSS and JavaScript, with no framework and no runtime dependencies. The aim is a site a small business owner could actually use and a developer could easily take over. Content lives in one file, logic is unit-tested, and `npm run build` produces a static `dist/` folder for any host.
 
 ## Features
 
-- **Responsive layout** checked at 320, 375, 768, 1024, 1440 and 1920 px with no horizontal scrolling.
-- **Thai/English switch** (TH | EN). Every visible string, image description and accessible label is translated. Only the language choice is saved in `localStorage`.
-- **Filterable menu** of six fictional products (all / drinks / desserts), with a screen-reader announcement of the result count.
-- **Demo bag**: add items, change quantities with − / +, remove items and see the running total. Keyboard friendly: focus moves into the drawer, stays inside it, and returns when it closes (Esc, backdrop or close button).
-- **Contact form validation** per field (required, minimum length, email format, maximum length), with inline messages, `aria-invalid`, focus moved to the first problem, and messages that re-translate when the language changes.
-- **Accessibility basics**: skip link, landmarks, one `h1` and no skipped heading levels, visible focus outlines, WCAG AA text contrast, every control at least 24×24 px (WCAG 2.5.8; the main touch controls are 40–44 px), labelled form fields, `prefers-reduced-motion` support, `lang` set per language.
-- **Security headers in the page**: a Content-Security-Policy meta tag (`script-src 'self'`, `connect-src 'none'`, `form-action 'none'`) so the page cannot send form data even if JavaScript fails.
-- **Menu photography**: six real food photos from Pexels (free licence, credited in [`assets/photos/CREDITS.md`](assets/photos/CREDITS.md)). They share a 1.19:1 crop, are about 20–165 KB each as WebP, and are lazy-loaded. The hero "Signature Matcha" uses the same matcha photo, cropped to the hero arch (`hero-matcha.webp`). The story illustration is original SVG artwork made for this demo; the original hero SVG is kept as a fallback.
-- **Stable scrolling**: closing the bag with ×, Esc or the backdrop keeps the page exactly where it was. "Continue" goes to the menu on purpose.
+- **Responsive layouts** for desktop, tablet and mobile. Checked at 320, 375, 768, 1024, 1440 and 1920 px with no horizontal scrolling.
+- **Thai and English switching** (TH | EN). Every visible string, image description and accessible label is translated, and the choice is remembered (`localStorage`).
+- **Interactive menu filtering**: all / drinks / desserts, with the result count announced to screen readers.
+- **Shopping bag (demo)**:
+  - Add items, change quantities with − / +, and remove items.
+  - The line totals and estimated total update immediately.
+  - Closing the bag keeps the page exactly where it was.
+  - There is no checkout or payment.
+- **Contact form validation**:
+  - Each field is checked for required, minimum length, email format and maximum length.
+  - Errors appear inline, with `aria-invalid`, and focus moves to the first problem.
+  - Messages re-translate when the language changes.
+  - Nothing is submitted.
+- **Accessibility considerations**:
+  - Skip link, landmarks, and a correct heading order.
+  - Visible focus outlines and WCAG AA text contrast.
+  - Every control is at least 24×24 px, and the main touch controls are 40–44 px.
+  - Focus moves into the bag drawer, stays there while it is open, and returns to the trigger when it closes.
+  - `prefers-reduced-motion` support, and `lang` set for each language.
+- **Security**:
+  - A Content-Security-Policy that blocks network requests from the page (`connect-src 'none'`) and blocks form submission (`form-action 'none'`).
+  - Netlify security headers via [`_headers`](_headers): `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`, `Permissions-Policy`, and `frame-ancestors`.
+- **Real food photography**: free Pexels stock photos, credited in [`assets/photos/CREDITS.md`](assets/photos/CREDITS.md), served as optimized WebP.
+- **Static deployment on Netlify**: plain files, with no server or database.
 
-### Demo limitations
+## Technology stack
 
-- The **bag** has no checkout, payment, stock or persistence. It resets on reload.
-- The **contact form** validates input and shows a success message, but **never sends or stores anything**. Connecting it to email or a database needs a backend, spam protection and a privacy notice, and would be separate scope.
-- Prices and products are fictional. The menu photos are **stock images for illustration**, not pictures of real products; the page says so under the menu.
+| Area         | Choice                                                                        |
+| ------------ | ----------------------------------------------------------------------------- |
+| Markup       | Semantic HTML5                                                                |
+| Styles       | Plain CSS with custom-property design tokens                                  |
+| Scripts      | Vanilla JavaScript (classic scripts, no framework or bundler)                 |
+| Fonts        | DM Sans, Kanit, Noto Sans Thai (Google Fonts, SIL Open Font License 1.1)      |
+| Code quality | Prettier, ESLint                                                              |
+| Tests        | Node's built-in test runner (`node --test`); Playwright for browser testing   |
+| Images       | WebP photos (Pexels), SVG illustrations, Pillow scripts for image preparation |
+| Hosting      | Netlify (static, manual deploys)                                              |
 
-## Technologies
+Everything in `package.json` is a development tool. The website itself has no runtime dependencies.
 
-| Area       | Choice                                                                                                                           |
-| ---------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| Markup     | Semantic HTML5                                                                                                                   |
-| Styles     | Plain CSS with custom-property design tokens (`src/styles.css`)                                                                  |
-| Scripts    | Vanilla JavaScript, classic scripts (no framework, no bundler)                                                                   |
-| Fonts      | DM Sans, Kanit, Noto Sans Thai via Google Fonts (SIL Open Font License 1.1)                                                      |
-| Quality    | Prettier, ESLint, Node's built-in test runner (`node --test`)                                                                    |
-| Browser QA | Playwright (MCP during development; optional Python smoke test)                                                                  |
-| Images     | Pexels photos (WebP) for the menu and hero, original SVG illustration for the story section; Pillow for photo prep and the cover |
+## Testing
 
-The website itself has **no runtime dependencies**. Everything in `package.json` is a development tool.
-
-## Project structure
-
-```
-index.html                  Page markup (lang="th" by default)
-src/
-  styles.css                All styles; design tokens in :root
-  content.js                Thai/English copy and the demo menu (edit content here)
-  logic.js                  Pure helpers: translation, prices, bag maths, form validation
-  main.js                   DOM wiring: language, menu, bag drawer, form, navigation
-assets/                     SVG illustrations, favicon, og-image.png (social preview)
-  photos/                   Menu photos (WebP) + CREDITS.md (sources and licence)
-  menu-*.svg                Original menu illustrations, kept as a fallback
-tests/
-  logic.test.js             Unit tests for src/logic.js
-  site.test.js              Static checks: TH/EN key parity, markup, demo-only behavior
-  load-scripts.js           Loads the browser scripts into node:vm for tests
-  smoke.spec.py             Optional Python Playwright smoke test (standalone file)
-  capture_gallery.py        Optional Python Playwright section screenshots
-tools/
-  build.mjs                 npm run build -> dist/ (copies only the website files)
-  build_standalone.py       Builds leaf-cafe-standalone.html (single offline file)
-  make_cover.py             Builds the 1600x900 Fastwork cover from screenshots
-  prepare_photos.py         Crops/converts downloaded Pexels originals into assets/photos/
-  og-card.html              Source layout for assets/og-image.png
-  generate_assets.py        Regenerates the SVG illustrations (overwrites assets/)
-  requirements.txt          Python tool dependencies (Pillow)
-screenshots/                Portfolio images (desktop, tablet, mobile, sections)
-leaf-cafe-standalone.html   Generated single-file copy for offline previews
-```
+- **Automated (run by `npm run check`):** 25 Node tests.
+  - Unit tests for the bag maths, prices, translation and form validation (`tests/logic.test.js`).
+  - Static checks (`tests/site.test.js`): TH/EN dictionaries have identical keys, translated markup is safe, there are no network calls, photos are credited, social preview URLs are absolute, and the security headers are present.
+- **Browser testing with Playwright** (run during development; the results are in [`TEST_RESULTS.md`](TEST_RESULTS.md)):
+  - Functional suites at 375, 768 and 1440 px against the source, the built `dist/` folder, the standalone file and the live Netlify site.
+  - Responsive checks from 320 to 1920 px.
+  - A bag-close scroll regression test: 4 close methods × 3 widths × 5 repetitions.
+  - Console, network and CSP violation checks.
+- **Optional Python smoke test:** [`tests/smoke.spec.py`](tests/smoke.spec.py) uses Python Playwright. It needs a project venv with `pip install playwright` plus Chrome or Edge, and is not part of `npm run check`.
 
 ## Run locally
 
-Requirements: Node 22+ and Python 3 (for the simple local server).
+Requirements: Node 22+ and Python 3 (only for the simple local server).
 
-```powershell
-npm install        # dev tools only
+```bash
+npm install        # development tools only
 npm run serve      # http://localhost:5500
 ```
 
-You can also open `index.html` directly, or double-click `leaf-cafe-standalone.html` (fully offline, system fonts).
+You can also open `index.html` directly, or double-click `leaf-cafe-standalone.html`. That single offline file has everything inlined and uses system fonts.
 
-## Checks and tests
+## Build and check
 
-```powershell
-npm run check      # Prettier check + ESLint + unit/static tests
+```bash
+npm run check      # Prettier check + ESLint + tests
 npm run format     # fix formatting
-npm run build      # create dist/ for hosting
+npm run build      # create dist/ for hosting (index.html, _headers, src/, assets/)
 npm run preview    # serve dist/ at http://localhost:5501
 ```
 
 Optional Python tools use a project-local virtual environment:
 
-```powershell
+```bash
 python -m venv .venv
-.venv\Scripts\pip install -r tools/requirements.txt   # Pillow, for make_cover.py
-.venv\Scripts\python tools\build_standalone.py        # rebuild the offline single file
-.venv\Scripts\python tools\make_cover.py              # rebuild the Fastwork cover
+.venv/Scripts/pip install -r tools/requirements.txt   # Pillow
+.venv/Scripts/python tools/build_standalone.py        # rebuild the offline single file
+.venv/Scripts/python tools/make_cover.py              # rebuild the cover image from screenshots
 ```
 
-`tests/smoke.spec.py` and `tests/capture_gallery.py` also need `pip install playwright` in the same venv. They use the installed Chrome or Edge, so no browser download is needed. Their debug screenshots go to `output/smoke/`, which is gitignored.
+## Project structure
 
-## Deployment (static hosting)
+```
+index.html                  Page markup (lang="th" by default)
+_headers                    Netlify security headers (copied into dist/)
+src/
+  styles.css                All styles; design tokens in :root
+  content.js                Thai/English copy and the demo menu (edit content here)
+  logic.js                  Pure helpers: translation, prices, bag maths, form validation
+  main.js                   DOM wiring: language, menu, bag drawer, form, navigation
+assets/
+  photos/                   Menu and hero photos (WebP) + CREDITS.md
+  *.svg                     Story illustration, favicon, original illustrations kept as fallback
+  og-image.png              1200×630 social preview image
+tests/                      Node tests, test loader, optional Python Playwright scripts
+tools/                      Build script, standalone builder, image preparation scripts
+screenshots/                Portfolio images (desktop, tablet, mobile, sections)
+leaf-cafe-standalone.html   Generated single-file copy for offline previews
+TEST_RESULTS.md             What was actually tested, and what was not
+```
 
-The site is static files only. `npm run build` creates `dist/`, which contains only `index.html`, `_headers`, `src/` and `assets/`. Tests, tools and screenshots are left out.
+## Deployment
 
-### Current deployment: Netlify, manual upload (Netlify Drop)
+The live demo is hosted on Netlify with **manual deploys**. It is not connected to this repository, and there is no automatic deployment. To update it, run `npm run check` and `npm run build`. Then open the existing site in Netlify, go to **Deploys**, and drag the `dist` folder onto the drop area. Do not use the stand-alone Netlify Drop page, which would create a new site with a different URL.
 
-Live site: <https://chic-moonbeam-379b0e.netlify.app/>. It is not connected to Git; every update is a manual upload of `dist/`.
+`index.html` uses absolute URLs for `canonical`, `og:url`, `og:image` and `twitter:image`. If the site moves to another domain, update those four lines.
 
-To update the live site and keep the same URL:
+Any other static host can serve `dist/` (build command `npm run build`, output directory `dist`). Hosts that do not read `_headers` need the same headers set in their own configuration.
 
-1. `npm run check`, then `npm run build`.
-2. Check that `dist/` contains `index.html`, `_headers`, `src/` and `assets/` at its top level.
-3. Sign in at <https://app.netlify.com>, open the existing site **chic-moonbeam-379b0e** and go to its **Deploys** tab.
-4. Drag the **`dist` folder** onto the drop area on the Deploys page ("drag and drop your site output folder here"). Netlify publishes it as a new deploy of the same site.
-   - Do **not** use the stand-alone Netlify Drop page (app.netlify.com/drop) or "Add new site". Those create a new site with a different URL.
-5. When the deploy shows **Published**, re-check the live site: open it, and run `curl -I https://chic-moonbeam-379b0e.netlify.app/` to confirm the headers.
+## Image attribution and licensing
 
-Rollback: in **Deploys**, open an earlier deploy and choose **Publish deploy**.
+- **Photos:** free stock photos from [Pexels](https://www.pexels.com) under the [Pexels License](https://www.pexels.com/license/). It allows commercial use, does not require attribution, and allows modification. Each photographer and source link is listed in [`assets/photos/CREDITS.md`](assets/photos/CREDITS.md). The photos illustrate a fictional menu and are **not** pictures of real products.
+- **Illustrations:** the SVG artwork was created for this demo.
+- **Fonts:** DM Sans, Kanit and Noto Sans Thai (SIL Open Font License 1.1), loaded from Google Fonts.
+- **Development tools:** Prettier, ESLint and globals (MIT), and Pillow (MIT-CMU).
+- **This repository:** no open-source license has been chosen yet, so all rights are reserved by default. Please ask before reusing the code.
 
-`_headers` gives Netlify the security headers: `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`, `Permissions-Policy`, and a Content-Security-Policy that adds `frame-ancestors 'none'` to the CSP in `index.html`. If the site ever needs to be shown inside an iframe (for example an embedded portfolio viewer), relax `X-Frame-Options` and `frame-ancestors` deliberately.
+## Known limitations
 
-### Social preview URLs
-
-`index.html` uses absolute URLs for `canonical`, `og:url`, `og:image` and `twitter:image`, because social crawlers ignore relative image paths. If the site moves to a custom domain, update those four lines and redeploy. To refresh a cached preview, use the Facebook Sharing Debugger, or share the link again in LINE.
-
-### Other static hosts
-
-Any static host can serve `dist/`. Vercel and Cloudflare Pages: build command `npm run build`, output directory `dist`. GitHub Pages: publish the contents of `dist/`. These hosts ignore `_headers` unless they support it (Cloudflare Pages does), so set equivalent headers in the host's own configuration.
-
-## Customizing for a real client
-
-- Edit text and menu items in `src/content.js` (both languages must keep the same keys; `npm test` checks this).
-- Replace the stock menu photos with the client's own product photos (same 1000×840 WebP size; `tools/prepare_photos.py` shows the crop settings) and update `CREDITS.md`.
-- A real contact form needs a backend or form service. Update the CSP `connect-src` / `form-action` accordingly and add a privacy notice.
-
-## Licenses
-
-- Website code and SVG illustrations: created for this demo.
-- Menu photos: Pexels License (free commercial use, attribution not required; credited anyway). Photographers and source links: [`assets/photos/CREDITS.md`](assets/photos/CREDITS.md). Do not reuse them as a logo or trademark, or sell them unaltered.
-- Fonts: DM Sans, Kanit and Noto Sans Thai, SIL Open Font License 1.1, loaded from Google Fonts. Remove the font `<link>` tags if a client prohibits third-party requests; the page falls back to system fonts.
-- Dev tools: Prettier (MIT), ESLint (MIT), globals (MIT). Python tool: Pillow (MIT-CMU).
+- The shopping bag has no checkout, payment, stock or persistence, and it resets on reload.
+- The contact form validates input but never sends or stores anything. A real form would need a backend or form service, spam protection, a privacy notice, and CSP changes.
+- Prices and products are fictional, and the photos are stock images.
+- Fonts load from Google Fonts. The page falls back to system fonts offline, and the standalone file always uses system fonts.
+- Browser testing covered Chromium only (desktop and emulated mobile). Safari, Firefox and physical devices were not tested.
+- The decorative ticker band is static and runs off the right edge on small screens by design.
