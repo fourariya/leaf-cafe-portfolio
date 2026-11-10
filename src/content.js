@@ -36,7 +36,7 @@
       heroProofTitle: "ทำด้วยใจ ใส่ใจทุกแก้ว",
       heroProofDesc: "คาเฟ่มัทฉะในจินตนาการ สำหรับวันที่อยากช้าลง",
       heroTagTop: "เมนูแนะนำวันนี้",
-      heroAlt: "ภาพประกอบแก้วมัทฉะเย็นกับใบไม้และสตรอว์เบอร์รี",
+      heroAlt: "แก้วมัทฉะลาเต้เย็นวางบนโต๊ะสีครีมรับแสงแดด",
       tickerLabel: "ทำด้วยมือ มัทฉะและอื่น ๆ ช่วงเวลาช้า ๆ ของคุณ",
 
       menuEyebrow: "Made to make you smile",
@@ -156,8 +156,7 @@
       heroProofTitle: "Made with care, every time",
       heroProofDesc: "An imaginary matcha café for slower days",
       heroTagTop: "Today's pick",
-      heroAlt:
-        "Illustration of an iced matcha latte with leafy accents and a strawberry",
+      heroAlt: "A glass of iced matcha latte on a sunlit cream-coloured table",
       tickerLabel: "Handcrafted with love, matcha and more, your slow moment",
 
       menuEyebrow: "Made to make you smile",

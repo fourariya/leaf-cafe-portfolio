@@ -42,6 +42,11 @@ def main() -> None:
     if not photos:
         raise SystemExit("No menu photos in assets/photos; run tools/prepare_photos.py first.")
     menu_images = {f"photos/{p.name}": data_uri(p) for p in photos}
+    # Photos referenced directly in index.html (the hero image).
+    for p in photos:
+        html = html.replace(f'src="assets/photos/{p.name}"', f'src="{data_uri(p)}"')
+    if 'src="assets/' in html:
+        raise SystemExit("An assets/ image in index.html was not inlined.")
 
     inline = [f"<script>window.__LEAF_ASSETS__ = {json.dumps(menu_images)};</script>"]
     inline += [f"<script>\n{(ROOT / 'src' / n).read_text(encoding='utf-8')}\n</script>" for n in SCRIPTS]

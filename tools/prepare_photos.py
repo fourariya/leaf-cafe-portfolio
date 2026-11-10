@@ -34,10 +34,16 @@ PHOTOS = {
     "cookies": (38594732, "Amine Kübranur Çakıroğlu", 1.00, 0.50, 0.70),
 }
 
+# Extra crops of the same originals: output name -> (source key, size, share, focus x, focus y).
+# The hero "Signature Matcha" uses the menu's matcha photo in the hero arch (800:860).
+EXTRA = {
+    "hero-matcha": ("matcha", (1000, 1075), 0.78, 0.50, 0.61),
+}
 
-def crop_box(width, height, share, fx, fy):
-    """Largest SIZE-ratio box of the given width share, centred on the focus, kept inside the image."""
-    ratio = SIZE[0] / SIZE[1]
+
+def crop_box(width, height, share, fx, fy, size=SIZE):
+    """Largest size-ratio box of the given width share, centred on the focus, kept inside the image."""
+    ratio = size[0] / size[1]
     w = width * share
     h = w / ratio
     if h > height:  # very wide source: fit by height instead
@@ -48,18 +54,24 @@ def crop_box(width, height, share, fx, fy):
     return tuple(round(v) for v in (left, top, left + w, top + h))
 
 
+def export(src_dir: Path, key: str, name: str, size, share, fx, fy) -> None:
+    src = src_dir / f"{key}.jpg"
+    if not src.exists():
+        raise SystemExit(f"Missing original: {src}")
+    im = ImageOps.exif_transpose(Image.open(src)).convert("RGB")
+    im = im.crop(crop_box(im.width, im.height, share, fx, fy, size))
+    im = im.resize(size, Image.Resampling.LANCZOS)
+    out = OUT / f"{name}.webp"
+    im.save(out, "WEBP", quality=QUALITY, method=6)
+    print(f"{out.relative_to(ROOT)}  {out.stat().st_size // 1024} KB")
+
+
 def main(src_dir: Path) -> None:
     OUT.mkdir(parents=True, exist_ok=True)
     for key, (_pid, _who, share, fx, fy) in PHOTOS.items():
-        src = src_dir / f"{key}.jpg"
-        if not src.exists():
-            raise SystemExit(f"Missing original: {src}")
-        im = ImageOps.exif_transpose(Image.open(src)).convert("RGB")
-        im = im.crop(crop_box(im.width, im.height, share, fx, fy))
-        im = im.resize(SIZE, Image.Resampling.LANCZOS)
-        out = OUT / f"menu-{key}.webp"
-        im.save(out, "WEBP", quality=QUALITY, method=6)
-        print(f"{out.relative_to(ROOT)}  {out.stat().st_size // 1024} KB")
+        export(src_dir, key, f"menu-{key}", SIZE, share, fx, fy)
+    for name, (key, size, share, fx, fy) in EXTRA.items():
+        export(src_dir, key, name, size, share, fx, fy)
 
 
 if __name__ == "__main__":

@@ -23,7 +23,7 @@ A bilingual (Thai/English), responsive landing page for a **fictional** matcha c
 - **Contact form validation** per field (required, minimum length, email format, maximum length), with inline messages, `aria-invalid`, focus moved to the first problem, and messages that re-translate when the language changes.
 - **Accessibility basics**: skip link, landmarks, one `h1` and no skipped heading levels, visible focus outlines, WCAG AA text contrast, every control at least 24×24 px (WCAG 2.5.8; the main touch controls are 40–44 px), labelled form fields, `prefers-reduced-motion` support, `lang` set per language.
 - **Security headers in the page**: a Content-Security-Policy meta tag (`script-src 'self'`, `connect-src 'none'`, `form-action 'none'`) so the page cannot send form data even if JavaScript fails.
-- **Menu photography**: six real food photos from Pexels (free licence, credited in [`assets/photos/CREDITS.md`](assets/photos/CREDITS.md)). They share a 1.19:1 crop, are about 20–165 KB each as WebP, and are lazy-loaded. The hero and story illustrations are original SVG artwork made for this demo.
+- **Menu photography**: six real food photos from Pexels (free licence, credited in [`assets/photos/CREDITS.md`](assets/photos/CREDITS.md)). They share a 1.19:1 crop, are about 20–165 KB each as WebP, and are lazy-loaded. The hero "Signature Matcha" uses the same matcha photo, cropped to the hero arch (`hero-matcha.webp`). The story illustration is original SVG artwork made for this demo; the original hero SVG is kept as a fallback.
 - **Stable scrolling**: closing the bag with ×, Esc or the backdrop keeps the page exactly where it was. "Continue" goes to the menu on purpose.
 
 ### Demo limitations
@@ -34,15 +34,15 @@ A bilingual (Thai/English), responsive landing page for a **fictional** matcha c
 
 ## Technologies
 
-| Area       | Choice                                                                                                       |
-| ---------- | ------------------------------------------------------------------------------------------------------------ |
-| Markup     | Semantic HTML5                                                                                               |
-| Styles     | Plain CSS with custom-property design tokens (`src/styles.css`)                                              |
-| Scripts    | Vanilla JavaScript, classic scripts (no framework, no bundler)                                               |
-| Fonts      | DM Sans, Kanit, Noto Sans Thai via Google Fonts (SIL Open Font License 1.1)                                  |
-| Quality    | Prettier, ESLint, Node's built-in test runner (`node --test`)                                                |
-| Browser QA | Playwright (MCP during development; optional Python smoke test)                                              |
-| Images     | Pexels photos (WebP) for the menu, original SVG illustrations elsewhere; Pillow for photo prep and the cover |
+| Area       | Choice                                                                                                                           |
+| ---------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| Markup     | Semantic HTML5                                                                                                                   |
+| Styles     | Plain CSS with custom-property design tokens (`src/styles.css`)                                                                  |
+| Scripts    | Vanilla JavaScript, classic scripts (no framework, no bundler)                                                                   |
+| Fonts      | DM Sans, Kanit, Noto Sans Thai via Google Fonts (SIL Open Font License 1.1)                                                      |
+| Quality    | Prettier, ESLint, Node's built-in test runner (`node --test`)                                                                    |
+| Browser QA | Playwright (MCP during development; optional Python smoke test)                                                                  |
+| Images     | Pexels photos (WebP) for the menu and hero, original SVG illustration for the story section; Pillow for photo prep and the cover |
 
 The website itself has **no runtime dependencies**. Everything in `package.json` is a development tool.
 

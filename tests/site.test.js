@@ -164,6 +164,12 @@ test("every menu photo is a local WebP with a documented credit", () => {
     );
   }
   assert.match(credits, /pexels\.com\/license/);
+  // The hero "Signature Matcha" is the same stock photo, so it needs a credit too.
+  assert.match(html, /src="assets\/photos\/hero-matcha\.webp"/);
+  assert.ok(
+    credits.includes("`hero-matcha.webp`"),
+    "hero photo missing from CREDITS.md",
+  );
   // Stock photos must not be presented as the café's real products.
   assert.match(copy.th.menuFootnote, /ภาพสต็อก/);
   assert.match(copy.en.menuFootnote, /stock images, not real products/);

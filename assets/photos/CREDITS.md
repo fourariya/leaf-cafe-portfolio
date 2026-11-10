@@ -10,7 +10,7 @@ All six photos are from [Pexels](https://www.pexels.com) under the [Pexels Licen
 
 | File | Menu item | Pexels photo | Photographer |
 | --- | --- | --- | --- |
-| `menu-matcha.webp` | Signature Matcha | [Refreshing Iced Matcha Latte on Minimalist Background](https://www.pexels.com/photo/refreshing-iced-matcha-latte-on-minimalist-background-32972501/) (#32972501) | [Dicky Agustian](https://www.pexels.com/@dickydikiw/) |
+| `menu-matcha.webp`, `hero-matcha.webp` | Signature Matcha (menu card and hero) | [Refreshing Iced Matcha Latte on Minimalist Background](https://www.pexels.com/photo/refreshing-iced-matcha-latte-on-minimalist-background-32972501/) (#32972501) | [Dicky Agustian](https://www.pexels.com/@dickydikiw/) |
 | `menu-strawberry.webp` | Strawberry Cloud | [Clear Glass Jar With Green and Red Liquid Topped with Strawberry](https://www.pexels.com/photo/clear-glass-jar-with-green-and-red-liquid-topped-with-strawberry-8134134/) (#8134134) | [Betül Nur](https://www.pexels.com/@betul-nur-53084391/) |
 | `menu-coffee.webp` | Slow Morning Coffee | [Iced Latte in Glass](https://www.pexels.com/photo/iced-latte-in-glass-11136849/) (#11136849) | [Federica Gioia](https://www.pexels.com/@fedigioia/) |
 | `menu-cheesecake.webp` | Matcha Cheesecake | [A slice of cake with strawberries and mint on a plate](https://www.pexels.com/photo/a-slice-of-cake-with-strawberries-and-mint-on-a-plate-27569550/) (#27569550) | [damla selen demir](https://www.pexels.com/@damla-selen-demir-429137893/) |
