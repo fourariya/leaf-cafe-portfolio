@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f8f7ef" />
+    <meta name="description" content="Leaf Café — เว็บไซต์ตัวอย่างสำหรับร้านมัทฉะและคาเฟ่ ออกแบบเพื่อแสดงผลงาน Web Development" />
+    <meta name="color-scheme" content="light" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+    <title>Leaf Café — A little pause, a lot of joy</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main" data-i18n="skip">ข้ามไปยังเนื้อหาหลัก</a>
+    <div class="top-note"><span class="top-spark">✳</span><span data-i18n="topNote">ชีวิตดีขึ้นได้ ด้วยช่วงเวลาพักเล็ก ๆ และมัทฉะดี ๆ</span><span class="top-spark">✳</span></div>
+    <header class="site-header" id="top">
+      <div class="nav-shell container">
+        <a href="#top" class="logo" aria-label="Leaf Café, home"><svg class="logo-icon" viewBox="0 0 42 42" fill="none" aria-hidden="true"><circle cx="21" cy="21" r="20" fill="#27503D"/><path d="M29.5 11.6C16 11 11.3 18.2 12.6 25c1.3 6.7 9.8 9.1 14.9 3.8 4.9-5 2-11.7 2-17.2Z" fill="#DDEAAB"/><path d="M13.8 29c5.2-8 11-11.1 15.2-14" stroke="#27503D" stroke-width="2.5" stroke-linecap="round"/></svg><span>leaf<span class="logo-dot">.</span> café</span></a>
+        <nav class="desktop-nav" aria-label="Main navigation">
+          <a href="#menu" data-i18n="navMenu">เมนู</a>
+          <a href="#story" data-i18n="navStory">เรื่องราวของเรา</a>
+          <a href="#experience" data-i18n="navExperience">บรรยากาศ</a>
+          <a href="#contact" data-i18n="navContact">ติดต่อ</a>
+        </nav>
+        <div class="nav-actions">
+          <button class="lang-switch" id="lang-toggle" type="button" aria-label="Switch language to English"><span id="lang-current">TH</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10l5 5 5-5"/></svg></button>
+          <button class="bag-button" id="bag-open" type="button" aria-label="Open sample selection bag"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 8.5h16l-1.1 12h-13L4 8.5Z"/><path d="M8.5 10V7a3.5 3.5 0 0 1 7 0v3"/></svg><span class="bag-count" id="bag-count">0</span></button>
+          <a class="nav-cta" href="#contact" data-i18n="navCta">แวะมาทักทาย <span aria-hidden="true">↗</span></a>
+          <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span></button>
+        </div>
+      </div>
+      <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" hidden>
+        <a href="#menu" data-i18n="navMenu">เมนู</a>
+        <a href="#story" data-i18n="navStory">เรื่องราวของเรา</a>
+        <a href="#experience" data-i18n="navExperience">บรรยากาศ</a>
+        <a href="#contact" data-i18n="navContact">ติดต่อ</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero container" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-line"></span><span data-i18n="heroEyebrow">A LITTLE GREEN, A LOT OF JOY</span></div>
+          <h1 id="hero-title"><span data-i18n="heroLine1">ให้ทุกวัน</span><span data-i18n="heroLine2">ละมุนขึ้น</span><em data-i18n="heroLine3">ทีละจิบ<span class="hero-asterisk">✳</span></em></h1>
+          <p class="hero-description" data-i18n="heroDesc">ในวันที่โลกหมุนเร็ว เราชวนคุณพักสักนิดกับมัทฉะแก้วโปรด ขนมอบหอม ๆ และช่วงเวลาดี ๆ ที่อยากเก็บไว้นานอีกหน่อย</p>
+          <div class="hero-buttons">
+            <a href="#menu" class="btn btn-primary"><span data-i18n="heroBrowse">ค้นหาเมนูโปรด</span><span aria-hidden="true">↗</span></a>
+            <a href="#story" class="btn btn-link"><span data-i18n="heroStory">รู้จัก Leaf Café</span><span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="hero-proof">
+            <div class="avatar-stack" aria-hidden="true"><span>☘</span><span>☕</span><span>♡</span></div>
+            <div><strong data-i18n="heroProofTitle">ทำด้วยใจ ใส่ใจทุกแก้ว</strong><small data-i18n="heroProofDesc">A mindful little café concept</small></div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-image-wrap"><img src="assets/hero-matcha.svg" alt="แก้วมัทฉะเย็นวาดประกอบกับใบไม้และสตรอว์เบอร์รี" data-alt-key="heroAlt" width="800" height="860" fetchpriority="high" /></div>
+          <div class="hero-stamp" aria-hidden="true"><span>FRESHLY</span><svg viewBox="0 0 100 100"><path d="M51 13C21 24 24 64 50 85 73 62 80 28 51 13Z" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M50 84C54 53 54 36 51 18" fill="none" stroke="currentColor" stroke-width="2.5"/></svg><span>PREPARED</span></div>
+          <div class="hero-tag"><span class="tag-star">✳</span><div><small data-i18n="heroTagTop">TODAY'S LITTLE JOY</small><strong>Signature Matcha</strong></div></div>
+          <div class="side-note" aria-hidden="true">SLOW SIPS · SUNNY DAYS · GOOD THINGS</div>
+        </div>
+      </section>
+
+      <section class="ticker" aria-label="Our values"><div class="ticker-track"><span>HANDCRAFTED WITH LOVE</span><b>✳</b><span>MATCHA & MORE</span><b>✳</b><span>YOUR SLOW MOMENT</span><b>✳</b><span>HANDCRAFTED WITH LOVE</span><b>✳</b><span>MATCHA & MORE</span><b>✳</b><span>YOUR SLOW MOMENT</span><b>✳</b></div></section>
+
+      <section class="menu-section section-space" id="menu" aria-labelledby="menu-title">
+        <div class="container">
+          <div class="section-heading menu-heading">
+            <div><p class="overline"><span class="little-flower">✳</span> <span data-i18n="menuEyebrow">MADE TO MAKE YOU SMILE</span></p><h2 id="menu-title"><span data-i18n="menuTitle1">อร่อยกับ</span> <em data-i18n="menuTitle2">ทุกโมเมนต์</em></h2><p class="section-description" data-i18n="menuDesc">เลือกเครื่องดื่มแก้วที่ใช่ แล้วเติมความสุขด้วยขนมโปรด</p></div>
+            <span class="menu-mark" aria-hidden="true">menu / 01</span>
+          </div>
+          <div class="filter-bar" role="group" aria-label="Menu categories">
+            <button type="button" class="filter-button is-active" data-filter="all" aria-pressed="true" data-i18n="filterAll">ทั้งหมด <span aria-hidden="true">↗</span></button>
+            <button type="button" class="filter-button" data-filter="drink" aria-pressed="false" data-i18n="filterDrink">เครื่องดื่ม</button>
+            <button type="button" class="filter-button" data-filter="dessert" aria-pressed="false" data-i18n="filterDessert">ขนมหวาน</button>
+          </div>
+          <div class="product-grid" id="product-grid" aria-live="polite"></div>
+          <p class="menu-footnote"><span>✳</span> <span data-i18n="menuFootnote">ราคาและรายการอาหารเป็นข้อมูลสมมติเพื่อสาธิตเว็บไซต์เท่านั้น</span></p>
+        </div>
+      </section>
+
+      <section class="story-section section-space" id="story" aria-labelledby="story-title">
+        <div class="container story-grid">
+          <div class="story-art"><img src="assets/cafe-interior.svg" loading="lazy" width="780" height="650" alt="ภาพวาดบรรยากาศคาเฟ่พร้อมหน้าต่างรับแสงธรรมชาติ" data-alt-key="storyAlt" /><div class="art-note"><span>✳</span><span data-i18n="storyArtLabel">A CORNER TO SLOW DOWN</span></div><div class="story-label" aria-hidden="true">GOOD DAYS BEGIN HERE</div></div>
+          <div class="story-copy"><p class="overline"><span class="little-flower">✳</span> <span data-i18n="storyEyebrow">HELLO, WE'RE LEAF CAFÉ</span></p><h2 id="story-title"><span data-i18n="storyLine1">ความสุขเล็ก ๆ</span><br /><em data-i18n="storyLine2">ที่ไม่ต้องรีบร้อน</em></h2><p data-i18n="storyText1">เราเชื่อว่าแก้วเครื่องดื่มดี ๆ ไม่ได้มีไว้แค่ดับกระหาย แต่เป็นข้ออ้างเล็ก ๆ ให้คุณได้พักจากความวุ่นวาย และกลับมาอยู่กับช่วงเวลาตรงหน้า</p><p data-i18n="storyText2">Leaf Café จึงถูกคิดขึ้นมาให้เป็นมุมอบอุ่นสำหรับบทสนทนาดี ๆ หนังสือเล่มโปรด และวันที่อยากใจดีกับตัวเองอีกนิด</p><div class="story-signature"><span class="signature-icon">✳</span><div><strong>slow is beautiful.</strong><small data-i18n="storySignature">little moments matter</small></div></div></div>
+        </div>
+      </section>
+
+      <section class="experience-section section-space" id="experience" aria-labelledby="experience-title"><div class="container"><div class="experience-header"><div><p class="overline"><span class="little-flower">✳</span> <span data-i18n="experienceEyebrow">MORE THAN A CUP</span></p><h2 id="experience-title"><span data-i18n="experienceTitle1">เติมเต็มวันดี ๆ</span> <em data-i18n="experienceTitle2">ในแบบของคุณ</em></h2></div><p data-i18n="experienceDesc">ทุกอย่างเริ่มจากความตั้งใจเล็ก ๆ ที่อยากให้คุณยิ้มได้ง่ายขึ้น</p></div><div class="feature-grid"><article class="feature-card"><span class="feature-number">01 /</span><div class="feature-icon">✳</div><h3 data-i18n="feature1Title">คัดสรรด้วยใจ</h3><p data-i18n="feature1Text">ทุกแก้วออกแบบจากรสชาติที่กลมกล่อมและความใส่ใจในรายละเอียด</p></article><article class="feature-card"><span class="feature-number">02 /</span><div class="feature-icon">☼</div><h3 data-i18n="feature2Title">มุมพักที่พอดี</h3><p data-i18n="feature2Text">บรรยากาศอบอุ่น เรียบง่าย ให้การพักของคุณเป็นเรื่องธรรมชาติ</p></article><article class="feature-card"><span class="feature-number">03 /</span><div class="feature-icon">♡</div><h3 data-i18n="feature3Title">ช่วงเวลาที่แชร์ได้</h3><p data-i18n="feature3Text">จะมากับเพื่อนหรือมากับตัวเอง ทุกช่วงเวลาก็มีความหมาย</p></article></div></div></section>
+
+      <section class="contact-section section-space" id="contact" aria-labelledby="contact-title"><div class="container contact-shell"><div class="contact-copy"><p class="overline overline-light"><span class="little-flower">✳</span> <span data-i18n="contactEyebrow">SAY HELLO, STAY A WHILE</span></p><h2 id="contact-title"><span data-i18n="contactLine1">วันนี้คุณ</span><br /><em data-i18n="contactLine2">พักใจหรือยัง?</em></h2><p data-i18n="contactDesc">มีเรื่องอยากบอก หรือแค่อยากส่งคำทักทาย? ทดลองกรอกฟอร์มด้านข้างได้เลย</p><div class="contact-info"><span class="contact-circle">↗</span><div><strong data-i18n="contactInfoTitle">Leaf Café — Demo concept</strong><small data-i18n="contactInfoDesc">เว็บไซต์ตัวอย่าง ไม่ใช่ร้านค้าที่เปิดให้บริการจริง</small></div></div></div><form class="contact-form" id="contact-form" novalidate><span class="form-label" data-i18n="formEyebrow">A LITTLE NOTE FROM YOU ✳</span><label for="form-name" data-i18n="formName">ชื่อของคุณ</label><input id="form-name" name="name" required minlength="2" maxlength="80" autocomplete="name" placeholder="ชื่อของคุณ" data-placeholder-key="formNamePlaceholder" /><label for="form-email" data-i18n="formEmail">อีเมล</label><input id="form-email" name="email" type="email" required maxlength="120" autocomplete="email" placeholder="hello@example.com" /><label for="form-message" data-i18n="formMessage">ข้อความถึงเรา</label><textarea id="form-message" name="message" required minlength="10" maxlength="1000" rows="4" placeholder="เล่าอะไรให้เราฟังหน่อย..." data-placeholder-key="formMessagePlaceholder"></textarea><button class="btn btn-form" type="submit"><span data-i18n="formSubmit">ลองส่งข้อความ</span><span aria-hidden="true">↗</span></button><p class="form-note" data-i18n="formNote">Demo เท่านั้น — ข้อความจะไม่ถูกส่งหรือบันทึกที่เซิร์ฟเวอร์</p><p class="form-feedback" id="form-feedback" role="status" aria-live="polite"></p></form></div></section>
+    </main>
+
+    <footer class="site-footer"><div class="container footer-top"><a href="#top" class="logo footer-logo"><svg class="logo-icon" viewBox="0 0 42 42" fill="none" aria-hidden="true"><circle cx="21" cy="21" r="20" fill="#27503D"/><path d="M29.5 11.6C16 11 11.3 18.2 12.6 25c1.3 6.7 9.8 9.1 14.9 3.8 4.9-5 2-11.7 2-17.2Z" fill="#DDEAAB"/><path d="M13.8 29c5.2-8 11-11.1 15.2-14" stroke="#27503D" stroke-width="2.5" stroke-linecap="round"/></svg><span>leaf<span class="logo-dot">.</span> café</span></a><p data-i18n="footerTagline">A small pause. A brighter day.</p><a href="#top" class="back-top"><span data-i18n="backTop">กลับด้านบน</span> ↑</a></div><div class="container footer-bottom"><small>© <span id="copyright-year">2026</span> Leaf Café · <span data-i18n="footerDemo">Fictional concept made for a web development portfolio.</span></small><small class="footer-credit" data-i18n="footerCredit">Illustrations created for this demo · No real orders or messages</small></div></footer>
+
+    <div class="drawer-backdrop" id="drawer-backdrop" hidden></div><aside class="bag-drawer" id="bag-drawer" role="dialog" aria-modal="true" aria-labelledby="bag-title" aria-hidden="true" inert><div class="drawer-head"><div><small class="overline" data-i18n="bagEyebrow">YOUR LITTLE PICKS</small><h2 id="bag-title" data-i18n="bagTitle">รายการที่เลือก</h2></div><button class="close-button" id="bag-close" type="button" aria-label="Close selection bag">×</button></div><p class="drawer-note" data-i18n="bagNote">ตัวอย่างตะกร้าเท่านั้น ยังไม่รองรับการสั่งซื้อหรือชำระเงินจริง</p><div id="bag-items" class="bag-items"></div><div class="bag-bottom"><div class="bag-total"><span data-i18n="bagTotal">ราคารวมโดยประมาณ</span><strong id="bag-total">฿0</strong></div><a href="#menu" class="btn btn-primary drawer-continue" id="bag-continue"><span data-i18n="bagContinue">เลือกเมนูต่อ</span><span aria-hidden="true">↗</span></a></div></aside><div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>

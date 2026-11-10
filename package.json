@@ -1,0 +1,10 @@
+{
+  "name": "leaf-cafe-portfolio-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Fictional bilingual cafe landing page and interactive portfolio demo",
+  "scripts": {
+    "check": "node --check script.js && node tests/validate.mjs",
+    "test": "node tests/validate.mjs"
+  }
+}

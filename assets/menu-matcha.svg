@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 420" role="img"><defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e7edda"/><stop offset="1" stop-color="#c4d8b0"/></linearGradient>
+<linearGradient id="drink" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#71994c"/><stop offset="1" stop-color="#e5eac9"/></linearGradient>
+<linearGradient id="glass" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#fff" stop-opacity=".5"/><stop offset=".5" stop-color="#fff" stop-opacity=".07"/><stop offset="1" stop-color="#fff" stop-opacity=".48"/></linearGradient>
+<filter id="sh"><feGaussianBlur stdDeviation="10"/></filter>
+<clipPath id="cup"><path d="M158 92 Q158 79 173 79 H326 Q342 79 342 93 L323 324 Q320 337 304 338 H197 Q181 337 178 325Z"/></clipPath></defs>
+<rect width="500" height="420" rx="26" fill="url(#bg)"/>
+<circle cx="110" cy="65" r="100" fill="#fff" opacity=".22"/><circle cx="421" cy="353" r="112" fill="#fff" opacity=".18"/>
+<path d="M31 320 C70 258 64 222 97 170 M70 257 C30 241 19 209 36 190 Q86 199 85 254 M91 196 C102 145 146 118 160 113 Q158 170 91 196" stroke="#648668" fill="none" stroke-width="3" opacity=".4"/>
+<ellipse cx="252" cy="351" rx="125" ry="23" fill="#4a5140" opacity=".17" filter="url(#sh)"/>
+<ellipse cx="248" cy="347" rx="142" ry="27" fill="#faf8f2"/>
+<path d="M159 91 Q159 80 175 80 H327 Q339 80 339 91 L322 325 Q320 337 304 338 H197 Q179 337 177 325Z" fill="url(#drink)"/>
+<g clip-path="url(#cup)"><rect x="150" y="82" width="200" height="95" fill="#71994c" opacity=".8"/><path d="M158 160 C203 145 235 184 275 159 Q309 140 342 161 L338 190 C290 212 251 181 213 210 L166 205Z" fill="#e5eac9" opacity=".65"/>
+<g fill="#fff" opacity=".34"><rect x="186" y="122" width="49" height="50" rx="10" transform="rotate(16 186 122)"/><rect x="268" y="123" width="49" height="50" rx="10" transform="rotate(-13 268 123)"/><rect x="219" y="232" width="53" height="55" rx="10" transform="rotate(16 219 232)"/></g></g>
+<path d="M158 92 Q158 79 173 79 H326 Q342 79 342 93 L323 324 Q320 337 304 338 H197 Q181 337 178 325Z" fill="url(#glass)" stroke="#fffef6" stroke-width="5" opacity=".85"/>
+<ellipse cx="249" cy="83" rx="91" ry="15" fill="#71994c" stroke="#fafaf1" stroke-width="5"/>
+<path d="M176 99 L195 319" stroke="#fff" stroke-width="9" opacity=".3"/>
+<path d="M291 15 L273 109" stroke="#9c7857" stroke-width="8" stroke-linecap="round"/>
+</svg>
